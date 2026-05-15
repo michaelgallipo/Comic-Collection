@@ -1,0 +1,41 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Comics" %>
+
+<h1>Comics</h1>
+
+<div id="comics">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Issue</th>
+        <th>Legacy No</th>
+        <th>Cover Var</th>
+        <th>Publisher</th>
+        <th>Purchase Date</th>
+        <th>Cost</th>
+        <th>Box</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comics.each do |comic| %>
+        <tr>
+          <td><%= link_to comic.title, comic %></td>
+          <td><%= comic.formatted_issue %></td>
+          <td><%= comic.formatted_legacy %></td>
+          <td><%= comic.cover_variant %></td>
+          <td><%= comic.publisher %></td>
+          <td><%= comic.purchase_date %></td>
+          <td><%= comic.cost %></td>
+          <td><%= comic.box %></td>
+          <td><%= comic.comments %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+<%= link_to "New comic", new_comic_path %>
