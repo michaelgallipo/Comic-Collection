@@ -5,6 +5,7 @@
 #  id            :bigint           not null, primary key
 #  box           :string
 #  comments      :text
+#  copies        :integer
 #  cost          :decimal(5, 2)
 #  cover_variant :string
 #  issue_number  :decimal(5, 1)
