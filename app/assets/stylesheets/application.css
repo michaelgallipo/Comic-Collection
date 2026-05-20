@@ -12,3 +12,13 @@
 #comics table td {
   padding: 0 1em;
 }
+
+/* Keep links from changing color after being clicked */
+a, a:visited {
+  color: #0366d6;
+}
+
+a:hover, a:focus {
+  color: #024ea2;
+  text-decoration: underline;
+}

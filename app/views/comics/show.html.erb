@@ -3,8 +3,9 @@
 <%= render @comic %>
 
 <div>
-  <%= link_to "Edit this comic", edit_comic_path(@comic) %> |
-  <%= link_to "Back to comics", comics_path %>
+  <%= link_to "Edit this comic", edit_comic_path(@comic) %> &ensp; | &ensp;
+  <%= link_to "Back to comics", comics_path %> &ensp; | &ensp;
+  <%= link_to "New comic", new_comic_path %>
 
   <%= button_to "Destroy this comic", @comic, method: :delete %>
 </div>

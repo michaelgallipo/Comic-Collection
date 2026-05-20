@@ -11,10 +11,16 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.1].define(version: 2026_05_19_193621) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
+  create_schema "extensions"
 
-  create_table "comics", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "extensions.pg_stat_statements"
+  enable_extension "extensions.pgcrypto"
+  enable_extension "extensions.uuid-ossp"
+  enable_extension "pg_catalog.plpgsql"
+  enable_extension "vault.supabase_vault"
+
+  create_table "public.comics", force: :cascade do |t|
     t.string "box"
     t.text "comments"
     t.integer "copies"
@@ -28,4 +34,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_19_193621) do
     t.string "title"
     t.datetime "updated_at", null: false
   end
+
 end

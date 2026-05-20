@@ -3,7 +3,10 @@ class ComicsController < ApplicationController
 
   # GET /comics or /comics.json
   def index
-    @comics = Comic.all
+    sortable = %w[title publisher purchase_date box]
+    sort = params[:sort].presence_in(sortable) || 'title'
+    direction = params[:direction] == 'desc' ? 'desc' : 'asc'
+    @comics = Comic.order(Arel.sql("#{sort} #{direction}"))
   end
 
   # GET /comics/1 or /comics/1.json
@@ -65,6 +68,6 @@ class ComicsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comic_params
-      params.expect(comic: [ :title, :issue_number, :legacy_issue, :cover_variant, :publisher, :purchase_date, :cost, :box, :comments ])
+      params.expect(comic: [ :title, :issue_number, :legacy_issue, :cover_variant, :publisher, :copies, :purchase_date, :cost, :box, :comments ])
     end
 end
