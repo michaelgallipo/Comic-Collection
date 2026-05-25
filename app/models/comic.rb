@@ -17,6 +17,8 @@
 #  updated_at    :datetime         not null
 #
 class Comic < ApplicationRecord
+  attribute :copies, :integer, default: 1
+
   def formatted_issue
     if issue_number && issue_number % 1 == 0
       issue_number.to_i.to_s

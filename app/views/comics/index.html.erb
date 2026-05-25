@@ -3,6 +3,9 @@
 <% content_for :title, "Comics" %>
 
 <h1>Comics</h1>
+<div>
+  <%= link_to "New comic", new_comic_path %>
+</div>
 
 <div id="comics">
   <table>
@@ -23,7 +26,7 @@
     <tbody>
       <% @comics.each do |comic| %>
         <tr>
-          <td><%= link_to comic.title, comic %></td>
+          <td class="no_underline"><%= link_to comic.title, comic %></td>
           <td><%= comic.formatted_issue %></td>
           <td><%= comic.formatted_legacy %></td>
           <td><%= comic.cover_variant %></td>
@@ -40,4 +43,3 @@
 </div>
 <br>
 <br>
-<%= link_to "New comic", new_comic_path %>

@@ -22,3 +22,11 @@ a:hover, a:focus {
   color: #024ea2;
   text-decoration: underline;
 }
+
+.no_underline a,
+.no_underline a:visited,
+.no_underline a:hover,
+.no_underline a:focus {
+  text-decoration: none !important;
+  color: inherit;
+}

@@ -6,7 +6,17 @@ class ComicsController < ApplicationController
     sortable = %w[title publisher purchase_date box]
     sort = params[:sort].presence_in(sortable) || 'title'
     direction = params[:direction] == 'desc' ? 'desc' : 'asc'
-    @comics = Comic.order(Arel.sql("#{sort} #{direction}"))
+
+    order_clause = case sort
+    when 'title'
+      ["title #{direction}", "issue_number ASC"]
+    when 'publisher', 'purchase_date', 'box'
+      ["#{sort} #{direction}", "title ASC", "issue_number ASC"]
+    else
+      ["title ASC", "issue_number ASC"]
+    end
+
+    @comics = Comic.order(Arel.sql(order_clause.join(', ')))
   end
 
   # GET /comics/1 or /comics/1.json
